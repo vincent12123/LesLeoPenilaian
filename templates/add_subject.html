@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{% if subject %}Update{% else %}Add{% endif %} Subject</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label for="subject_name" class="form-label">Subject Name</label>
+        <input type="text" class="form-control" id="subject_name" name="subject_name" value="{{ subject.subject_name if subject else '' }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">{% if subject %}Update{% else %}Add{% endif %} Subject</button>
+</form>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{% if grade %}Update{% else %}Add{% endif %} Grade</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label for="student_id" class="form-label">Student</label>
+        <select class="form-control" id="student_id" name="student_id" required>
+            {% for student in students %}
+            <option value="{{ student.id }}" {% if grade and grade.student_id == student.id %}selected{% endif %}>{{ student.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="assignment_id" class="form-label">Assignment</label>
+        <select class="form-control" id="assignment_id" name="assignment_id" required>
+            {% for assignment in assignments %}
+            <option value="{{ assignment.id }}" {% if grade and grade.assignment_id == assignment.id %}selected{% endif %}>{{ assignment.assignment_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="score" class="form-label">Score</label>
+        <input type="number" step="0.01" class="form-control" id="score" name="score" value="{{ grade.score if grade else '' }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">{% if grade %}Update{% else %}Add{% endif %} Grade</button>
+</form>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Grades</h2>
+<a href="{{ url_for('add_grade') }}" class="btn btn-primary mb-3">Add Grade</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Student</th>
+            <th>Assignment</th>
+            <th>Score</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for grade in grades %}
+        <tr>
+            <td>{{ grade.id }}</td>
+            <td>{{ grade.student.name }}</td>
+            <td>{{ grade.assignment.assignment_name }}</td>
+            <td>{{ grade.score }}</td>
+            <td>
+                <a href="{{ url_for('update_grade', id=grade.id) }}" class="btn btn-warning">Edit</a>
+                <a href="{{ url_for('delete_grade', id=grade.id) }}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

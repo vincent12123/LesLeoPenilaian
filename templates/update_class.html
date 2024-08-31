@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Update Class</h2>
+
+<form method="POST">
+    <div class="mb-3">
+        <label for="class_name" class="form-label">Class Name</label>
+        <input type="text" class="form-control" id="class_name" name="class_name" value="{{ class_item.class_name }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Update Class</button>
+</form>
+
+<a href="{{ url_for('get_classes') }}" class="btn btn-secondary mt-3">Back to Classes</a>
+
+{% endblock %}

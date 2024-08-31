@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Subjects</h2>
+<a href="{{ url_for('add_subject') }}" class="btn btn-primary mb-3">Add Subject</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Subject Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for subject in subjects %}
+        <tr>
+            <td>{{ subject.id }}</td>
+            <td>{{ subject.subject_name }}</td>
+            <td>
+                <a href="{{ url_for('update_subject', id=subject.id) }}" class="btn btn-warning">Edit</a>
+                <a href="{{ url_for('delete_subject', id=subject.id) }}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

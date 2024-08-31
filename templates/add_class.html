@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{% if class_item %}Update{% else %}Add{% endif %} Class</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label for="class_name" class="form-label">Class Name</label>
+        <input type="text" class="form-control" id="class_name" name="class_name" value="{{ class_item.class_name if class_item else '' }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">{% if class_item %}Update{% else %}Add{% endif %} Class</button>
+</form>
+{% endblock %}

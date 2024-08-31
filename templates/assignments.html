@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Assignments</h2>
+<a href="{{ url_for('add_assignment') }}" class="btn btn-primary mb-3">Add Assignment</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Assignment Name</th>
+            <th>Date Assigned</th>
+            <th>Class</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for assignment in assignments %}
+        <tr>
+            <td>{{ assignment.id }}</td>
+            <td>{{ assignment.assignment_name }}</td>
+            <td>{{ assignment.date_assigned.strftime('%Y-%m-%d') }}</td>
+            <td>{{ assignment.class_.class_name }}</td> <!-- Access class name using 'class_' -->
+            <td>
+                <a href="{{ url_for('update_assignment', id=assignment.id) }}" class="btn btn-warning btn-sm">Edit</a>
+                <a href="{{ url_for('delete_assignment', id=assignment.id) }}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Add Assignment</h2>
+<form method="POST" action="{{ url_for('add_assignment') }}">
+    <div class="mb-3">
+        <label for="assignment_name" class="form-label">Assignment Name</label>
+        <input type="text" class="form-control" id="assignment_name" name="assignment_name" required>
+    </div>
+    <div class="mb-3">
+        <label for="class_id" class="form-label">Class</label>
+        <select class="form-control" id="class_id" name="class_id" required>
+            {% for class in classes %}
+            <option value="{{ class.id }}">{{ class.class_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="subject_id" class="form-label">Subject</label>
+        <select class="form-control" id="subject_id" name="subject_id" required>
+            {% for subject in subjects %}
+            <option value="{{ subject.id }}">{{ subject.subject_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Assignment</button>
+</form>
+{% endblock %}
